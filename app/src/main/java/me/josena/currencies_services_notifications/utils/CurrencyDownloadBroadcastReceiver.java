@@ -33,7 +33,9 @@ public class CurrencyDownloadBroadcastReceiver extends BroadcastReceiver {
 
         if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
             // Request the permission
-            ActivityCompat.requestPermissions((Activity) context, new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 0);
+            if (context instanceof Activity) {
+                ActivityCompat.requestPermissions((Activity) context, new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 0);
+            }
             // Return instead of showing the notification
             return;
         }
@@ -41,5 +43,4 @@ public class CurrencyDownloadBroadcastReceiver extends BroadcastReceiver {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         notificationManager.notify(NOTIFICATION_ID, builder.build());
     }
-
 }

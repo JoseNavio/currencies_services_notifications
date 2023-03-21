@@ -59,6 +59,7 @@ public class DownloadCurrencyService extends IntentService {
 
     @Override
     public void onDestroy() {
+
         super.onDestroy();
         Log.d(TAG, "Service killed.");
         downloading = false;
@@ -165,4 +166,3 @@ public class DownloadCurrencyService extends IntentService {
         void onDownloadCompleted(boolean success);
     }
 }
-
